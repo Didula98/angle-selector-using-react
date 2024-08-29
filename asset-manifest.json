@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/angle-selector-using-react/static/css/main.e6c13ad2.css",
+    "main.js": "/angle-selector-using-react/static/js/main.aa142f7c.js",
+    "static/js/453.f4ee8480.chunk.js": "/angle-selector-using-react/static/js/453.f4ee8480.chunk.js",
+    "index.html": "/angle-selector-using-react/index.html",
+    "main.e6c13ad2.css.map": "/angle-selector-using-react/static/css/main.e6c13ad2.css.map",
+    "main.aa142f7c.js.map": "/angle-selector-using-react/static/js/main.aa142f7c.js.map",
+    "453.f4ee8480.chunk.js.map": "/angle-selector-using-react/static/js/453.f4ee8480.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.e6c13ad2.css",
+    "static/js/main.aa142f7c.js"
+  ]
+}
