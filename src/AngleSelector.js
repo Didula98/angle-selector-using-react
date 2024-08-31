@@ -5,7 +5,7 @@ const AngleSelector = () => {
 
   // Update both the angle state and the radio buttons when input changes
   const handleInputChange = (event) => {
-    let value = parseInt(event.target.value) || 0;
+    let value = parseInt(event.target.value);
     if (value > 360) {
       value %= 360;
     }
@@ -14,7 +14,7 @@ const AngleSelector = () => {
 
   // Update angle state when slider changes
   const handleSliderChange = (event) => {
-    let value = parseInt(event.target.value) || 0;
+    let value = parseInt(event.target.value);
     if (value > 360) {
       value %= 360;
     }
