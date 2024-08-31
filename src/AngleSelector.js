@@ -1,44 +1,136 @@
 import React, { useState } from 'react';
 
-function AngleSelector() {
-    const [angleDegrees, setAngleDegrees] = useState(0);
-    const [sliderValue, setSliderValue] = useState(0);
+const AngleSelector = () => {
+  const [angle, setAngle] = useState(180);
 
-   // Handler for changes in the input box
-    const handleInputChange = (e) => {
-      let value = parseInt(e.target.value) || 0;
-      if (value < 0) value = 0;
-      if (value > 360) value = 360;
-      setAngleDegrees(value);
-      setSliderValue(value - 180);
-    };
+  // Update both the angle state and the radio buttons when input changes
+  const handleInputChange = (event) => {
+    let value = parseInt(event.target.value) || 0;
+    if (value > 360) {
+      value %= 360;
+    }
+    setAngle(value);
+  };
 
-    // Handler for changes in the slider
-    const handleSliderChange = (e) => {
-      setAngleDegrees(parseInt(e.target.value) + 180);
-      setSliderValue(parseInt(e.target.value));
-    };
+  // Update angle state when slider changes
+  const handleSliderChange = (event) => {
+    let value = parseInt(event.target.value) || 0;
+    if (value > 360) {
+      value %= 360;
+    }
+    setAngle(value);
+  };
 
-    // Handler for changes in the radio buttons
-    const handleRadioChange = (e) => {
-      setAngleDegrees(parseInt(e.target.value));
-      setSliderValue(parseInt(e.target.value) - 180);
-    };
+  // Update angle state when a radio button is clicked
+  const handleRadioChange = (event) => {
+    const value = parseInt(event.target.value);
+    setAngle(value);
+  };
 
   return (
-    <div>
-      <input type="number" value={angleDegrees} onChange={handleInputChange} min="0" max="360" />
-      <input type="range" min="-180" max="180" value={sliderValue} onChange={handleSliderChange} />
-
-      <div>
-        <input type="radio" name="angle" value="0" checked={angleDegrees === 0} onChange={handleRadioChange} /> 0
-        <input type="radio" name="angle" value="45" checked={angleDegrees === 45} onChange={handleRadioChange} /> 45
-        <input type="radio" name="angle" value="60" checked={angleDegrees === 60} onChange={handleRadioChange} /> 60
-        <input type="radio" name="angle" value="90" checked={angleDegrees === 90} onChange={handleRadioChange} /> 90
-        <input type="radio" name="angle" value="180" checked={angleDegrees === 180} onChange={handleRadioChange} /> 180
+    <div style={styles.body}>
+      <div style={styles.container}>
+        <h1 style={styles.heading}>Angle Selector</h1>
+        <div style={styles.controls}>
+          <div style={styles.inputRow}>
+            <input
+              type="number"
+              value={angle}
+              min="0"
+              max="360"
+              onChange={handleInputChange}
+            />
+            <input
+              type="range"
+              min="0"
+              max="360"
+              value={angle}
+              onChange={handleSliderChange}
+            />
+          </div>
+          <div style={styles.radioRow}>
+            <input
+              type="radio"
+              name="angle"
+              value="0"
+              checked={angle === 0}
+              onChange={handleRadioChange}
+            />{' '}
+            0
+            <input
+              type="radio"
+              name="angle"
+              value="45"
+              checked={angle === 45}
+              onChange={handleRadioChange}
+            />{' '}
+            45
+            <input
+              type="radio"
+              name="angle"
+              value="60"
+              checked={angle === 60}
+              onChange={handleRadioChange}
+            />{' '}
+            60
+            <input
+              type="radio"
+              name="angle"
+              value="90"
+              checked={angle === 90}
+              onChange={handleRadioChange}
+            />{' '}
+            90
+            <input
+              type="radio"
+              name="angle"
+              value="180"
+              checked={angle === 180}
+              onChange={handleRadioChange}
+            />{' '}
+            180
+          </div>
+        </div>
       </div>
     </div>
   );
-}
+};
+
+// Inline styles for the component
+const styles = {
+  body: {
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    justifyContent: 'center',
+    height: '100vh',
+    margin: 0,
+    fontFamily: 'Arial, sans-serif',
+    backgroundColor: '#f0f0f0',
+  },
+  container: {
+    borderRadius: '10px',
+    padding: '20px',
+    backgroundColor: '#fff',
+    boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)',
+    textAlign: 'center',
+  },
+  heading: {
+    marginBottom: '20px',
+    color: '#333',
+  },
+  controls: {
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+  },
+  inputRow: {
+    marginBottom: '15px',
+  },
+  radioRow: {
+    display: 'flex',
+    gap: '10px',
+  },
+};
 
 export default AngleSelector;
